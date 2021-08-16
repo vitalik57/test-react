@@ -7,14 +7,11 @@ class PraktikPage extends Component {
     users: []
   };
   componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.postId}`).then(response =>
-      // console.log(response.data)
-      {
-        this.setState({
-          users: response.data
-        });
-      }
-    );
+    axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.postId}`).then(response => {
+      this.setState({
+        users: response.data
+      });
+    });
   }
   addNewAdv = newPost => {
     this.setState(prevState => ({
@@ -34,7 +31,7 @@ class PraktikPage extends Component {
             </Link>
           </div>
         ))}
-        <Link to="/newPost">
+        <Link addNewAdv={this.addNewAdv} to="/newPost">
           {" "}
           <button type="submite">Add new</button>
         </Link>

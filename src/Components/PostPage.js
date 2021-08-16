@@ -6,20 +6,19 @@ class PostPage extends Component {
   };
   componentDidMount() {
     try {
-      axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.postId}`).then(response =>
-        // console.log(response.data)
-        {
-          this.setState({
-            commets: response.data
-          });
-        }
-      );
+      axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.postId}`).then(response => {
+        this.setState({
+          commets: response.data
+        });
+      });
     } catch (error) {
       console.log(error);
     }
   }
   handleClick = () => {
-    axios.get("https://jsonplaceholder.typicode.com/posts/3").then(response => console.log(response.data));
+    axios
+      .get(`https://jsonplaceholder.typicode.com/posts/${this.props.match.params.postId}`)
+      .then(response => console.log(response.data));
   };
   render() {
     console.log(this.props);

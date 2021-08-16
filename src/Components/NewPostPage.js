@@ -6,14 +6,7 @@ class NewPostPage extends Component {
     inputValue: ""
   };
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/comments?postId=1").then(
-      response => console.log(response.data)
-      //   {
-      //     this.setState({
-      //       users: response.data
-      //     });
-      //   }
-    );
+    axios.get("https://jsonplaceholder.typicode.com/comments?postId=1").then(response => console.log(response.data));
   }
 
   handleChange = e => {

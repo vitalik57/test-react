@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import PraktikPage from "./PraktikPage";
 
 class UserPage extends Component {
   state = {
@@ -9,39 +9,26 @@ class UserPage extends Component {
   };
 
   componentDidMount() {
-    axios.get(" https://jsonplaceholder.typicode.com/users").then(response =>
-      // console.log(response.data)
-      {
-        this.setState({
-          users: response.data
-        });
-      }
-    );
+    axios.get(" https://jsonplaceholder.typicode.com/users").then(response => {
+      this.setState({
+        users: response.data
+      });
+    });
   }
 
   render() {
     return (
       <>
         <div>
-          <h1>UserPage</h1>
+          <h1>{this.props.users}</h1>
+
           {this.state.users.map(user => (
             <div>
               {" "}
               <li id={user.id}>{user.name}</li>{" "}
-              {/* <Link to={`/posts`}>
-                <button type="button">Posts</button>
-              </Link> */}
               <Link to={`/posts/${user.id}`}>
                 <button type="button">Posts</button>
               </Link>
-              {/* <button
-                type="button"
-                onClick={() => {
-                  console.log(this.state.users);
-                }}
-              >
-                Posts
-              </button> */}
             </div>
           ))}
         </div>
@@ -49,5 +36,11 @@ class UserPage extends Component {
     );
   }
 }
-
-export default UserPage;
+const mapStateToProps = state => {
+  return {
+    a: 1,
+    b: 2,
+    users: state.users
+  };
+};
+export default connect(mapStateToProps)(UserPage);
