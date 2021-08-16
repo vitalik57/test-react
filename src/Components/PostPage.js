@@ -24,13 +24,12 @@ class PostPage extends Component {
     console.log(this.props);
     return (
       <>
-        ПОСТ
         {this.state.commets.map(user => (
           <div>
             <li id={user.id}>{user.email}</li>
             <li id={user.id}>{user.name}</li>
             <button type="button" onClick={this.handleClick}>
-              gettme
+              all comments
             </button>
           </div>
         ))}

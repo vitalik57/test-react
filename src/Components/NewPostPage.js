@@ -22,7 +22,6 @@ class NewPostPage extends Component {
     console.log(this.props);
     return (
       <>
-        NewPostPage
         <div>
           {" "}
           <input name="inputValue" type="text" value={this.state.inputValue} onChange={this.handleChange} />

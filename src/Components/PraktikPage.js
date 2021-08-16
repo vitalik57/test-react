@@ -22,7 +22,6 @@ class PraktikPage extends Component {
     console.log(this.state);
     return (
       <>
-        <h1>PostPage</h1>
         {this.state.users.map(user => (
           <div>
             <li id={user.id}>{user.title}</li>
