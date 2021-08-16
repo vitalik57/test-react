@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PraktikPage from "./PraktikPage";
 
 class UserPage extends Component {
   state = {
@@ -27,12 +28,12 @@ class UserPage extends Component {
             <div>
               {" "}
               <li id={user.id}>{user.name}</li>{" "}
-              <Link to={`/posts`}>
-                <button type="button">Posts</button>
-              </Link>
-              {/* <Link to={`/posts/${user.id}`}>
+              {/* <Link to={`/posts`}>
                 <button type="button">Posts</button>
               </Link> */}
+              <Link to={`/posts/${user.id}`}>
+                <button type="button">Posts</button>
+              </Link>
               {/* <button
                 type="button"
                 onClick={() => {

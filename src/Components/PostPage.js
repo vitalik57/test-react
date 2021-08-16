@@ -1,8 +1,42 @@
+import axios from "axios";
 import React, { Component } from "react";
 class PostPage extends Component {
-  state = {};
+  state = {
+    commets: []
+  };
+  componentDidMount() {
+    try {
+      axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.postId}`).then(response =>
+        // console.log(response.data)
+        {
+          this.setState({
+            commets: response.data
+          });
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  handleClick = () => {
+    axios.get("https://jsonplaceholder.typicode.com/posts/3").then(response => console.log(response.data));
+  };
   render() {
-    return <>PostPage</>;
+    console.log(this.props);
+    return (
+      <>
+        ПОСТ
+        {this.state.commets.map(user => (
+          <div>
+            <li id={user.id}>{user.email}</li>
+            <li id={user.id}>{user.name}</li>
+            <button type="button" onClick={this.handleClick}>
+              gettme
+            </button>
+          </div>
+        ))}
+      </>
+    );
   }
 }
 
